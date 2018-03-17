@@ -91,7 +91,10 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "@google/maps": "^0.4.5",
+    "material-ui": "^0.20.0",
     "ramda": "^0.25.0",
-    "ramda-fantasy": "^0.8.0"
+    "ramda-fantasy": "^0.8.0",
+    "react-router-dom": "^4.2.2"
   }
 }
