@@ -1,0 +1,27 @@
+{
+  "name": "VisualisingExclusion",
+  "version": "1.0.0",
+  "description": "CityDataHack March 2018",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CityDataHack/VisualisingExclusion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CityDataHack/VisualisingExclusion/issues"
+  },
+  "homepage": "https://github.com/CityDataHack/VisualisingExclusion#readme",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "ramda": "^0.25.0",
+    "ramda-fantasy": "^0.8.0"
+  }
+}
