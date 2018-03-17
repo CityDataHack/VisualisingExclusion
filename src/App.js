@@ -23,7 +23,7 @@ class App extends Component {
 							<Route exact path="/" component={Index}/>
 							<Route path="/events" component={Events}/>
 							<Route path="/user" component={User}/>
-							<Route path="/blog" component={Profile}/>
+							<Route path="/profile" component={Profile}/>
 						</Switch>
 					</React.Fragment>
 				</MuiThemeProvider>
