@@ -16,6 +16,10 @@ const closeButton = {
 	top: 0
 };
 
+const barStyle = {
+	marginBottom: "1em",
+}
+
 class Nav extends React.Component {
 	constructor(props) {
 		super(props);
@@ -47,6 +51,7 @@ class Nav extends React.Component {
 					title="V.ex"
 					onTitleClick={this.handleClick}
 					onLeftIconButtonClick={this.handleClick}
+					style={barStyle}
 				/>
 				<Drawer
 					open={this.state.isOpen}
