@@ -33,7 +33,7 @@ const events = {
 	},
 };
 
-const dateStyle = {
+const descStyle = {
 	position: 'absolute',
 	fontSize: '.75em',
 	height: '1em',
@@ -49,12 +49,12 @@ const distanceStyle = {
 	top: '10%',
 };
 
-const dates = [
-	'Monday 6pm',
-	'Tuesday 7pm',
-	'Thursday 6pm',
-	'Friday 3pm',
-	'Friday 7pm',
+const desc = [
+	'Mediteranean food',
+	'Landscape painting',
+	'Mediteranean food',
+	'Bikram yoga',
+	'Landscape painting',
 ];
 
 const distances = [
@@ -83,7 +83,7 @@ class Events extends React.Component {
 						height: "10em",
 						background: `linear-gradient(to right, ${events[item.toLowerCase()].color} 50%, rgba(0, 0, 0, 0) 100%), url(${events[item.toLowerCase()].backgroundImage}) right center`,
 						backgroundSize: "cover",
-					}}><span style={distanceStyle}>{distances[index]}</span><span style={dateStyle}>{dates[index]}</span></RaisedButton></Link>
+					}}><span style={distanceStyle}>{distances[index]}</span><span style={descStyle}>{desc[index]}</span></RaisedButton></Link>
 				))}
 			</div>
 		);
