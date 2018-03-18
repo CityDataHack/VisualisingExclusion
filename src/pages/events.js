@@ -63,14 +63,20 @@ const distances = [
 	'0.7 mi',
 	'1.1 mi',
 	'1.6 mi',
-]
+];
+
+const route = {
+	cooking: '/user1',
+	painting: '/user2',
+	yoga: '/user3',
+}
 
 class Events extends React.Component {
 	render() {
 		return (
 			<div className="container">
 				{list.map((item, index) => (
-					<Link to="/user"><RaisedButton label={item} labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={{
+					<Link to={route[item.toLowerCase()]}><RaisedButton label={item} labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={{
 						borderRadius: 0,
 						color: '#fff',
 						textAlign: "left",
