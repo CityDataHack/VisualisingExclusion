@@ -1,4 +1,6 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
+import Subheader from 'material-ui/Subheader';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Drawer from 'material-ui/Drawer';
@@ -19,7 +21,24 @@ const closeButton = {
 const barStyle = {
 	marginBottom: "1em",
 	backgroundColor: '#263238'
-}
+};
+
+const style = {
+	background: "url(./images/profile.jpg) 80% 40%",
+	backgroundSize: 'cover',
+	height: 100,
+	width: 100,
+	margin: "0 auto 1em",
+	textAlign: 'center',
+	display: 'block',
+};
+
+const subHeaderStyle = {
+	fontWeight: 600,
+	marginTop: '-1.5em',
+	textAlign: 'center',
+	marginLeft: '-.6em'
+};
 
 class Nav extends React.Component {
 	constructor(props) {
@@ -60,6 +79,8 @@ class Nav extends React.Component {
 					containerStyle={drawerStyle}
 				>
 					<IconButton style={closeButton} onClick={this.handleClose}><NavigationClose /></IconButton>
+					<Link to="/profile" onClick={this.handleClose}><Paper style={style} zDepth={1} circle={true} /></Link>
+					<Subheader style={subHeaderStyle}>Alisson</Subheader>
 					<MenuItem onClick={this.handleClose}><Link to="/">Index</Link></MenuItem>
 					<MenuItem onClick={this.handleClose}><Link to="/events">Events</Link></MenuItem>
 					<MenuItem onClick={this.handleClose}><Link to="/profile">Profile</Link></MenuItem>

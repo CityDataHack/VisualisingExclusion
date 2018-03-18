@@ -32,6 +32,13 @@ const removeStyle = {
 	cursor: 'pointer'
 };
 
+const subHeaderStyle2 = {
+	fontWeight: 600,
+	marginTop: '-1.5em',
+	textAlign: 'center',
+	marginLeft: '-.6em'
+};
+
 class Profile extends React.Component {
 	handleRemove(e) {
 		e.target.parentElement.remove();
@@ -41,6 +48,7 @@ class Profile extends React.Component {
 		return (
 			<div className="container">
 				<Paper style={style} zDepth={1} circle={true} />
+				<Subheader style={subHeaderStyle2}>Alisson</Subheader>
 				<Subheader style={subHeaderStyle}>Abilities:</Subheader>
 				<Paper style={groupStyle} zDepth={1} rounded={false}>English<span onClick={this.handleRemove.bind(this)} style={removeStyle}>_</span></Paper>
 				<Paper style={groupStyle} zDepth={1} rounded={false}>Spanish<span onClick={this.handleRemove.bind(this)} style={removeStyle}>_</span></Paper>
