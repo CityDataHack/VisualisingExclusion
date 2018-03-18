@@ -7,7 +7,9 @@ import './App.css';
 // Pages
 import Index from './pages/index';
 import Events from './pages/events';
-import User from './pages/user';
+import User1 from './pages/userCooking';
+import User2 from './pages/userPainting';
+import User3 from './pages/userYoga';
 import Profile from './pages/profile';
 
 // Components
@@ -23,7 +25,9 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={Index}/>
 							<Route path="/events" component={Events}/>
-							<Route path="/user" component={User}/>
+							<Route path="/user1" component={User1}/>
+							<Route path="/user2" component={User2}/>
+							<Route path="/user3" component={User3}/>
 							<Route path="/profile" component={Profile}/>
 						</Switch>
 					</React.Fragment>

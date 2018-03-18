@@ -18,6 +18,7 @@ const closeButton = {
 
 const barStyle = {
 	marginBottom: "1em",
+	backgroundColor: '#263238'
 }
 
 class Nav extends React.Component {
