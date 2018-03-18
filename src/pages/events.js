@@ -2,14 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const buttonStyle = {
-	borderRadius: 0,
-	textAlign: "left",
-	height: "10em",
-	background: "linear-gradient(to right, #E91E63 50%, rgba(0, 0, 0, 0) 100%), url(./images/food1.jpg) right center",
-	backgroundSize: "cover",
-};
-
 const style = {
 	marginBottom: "1em",
 }
@@ -18,20 +10,75 @@ const labelStyle = {
 	fontSize: "2em",
 }
 
+const list = [
+	'Cooking',
+	'Painting',
+	'Cooking',
+	'Yoga',
+	'Painting'
+];
+
+const events = {
+	cooking: {
+		color: '#EF5350',
+		backgroundImage: './images/food1.jpg',
+	},
+	painting: {
+		color: '#AB47BC',
+		backgroundImage: './images/painting.jpg',
+	},
+	yoga: {
+		color: '#43A047',
+		backgroundImage: './images/yoga.jpg',
+	},
+};
+
+const dateStyle = {
+	position: 'absolute',
+	fontSize: '.75em',
+	height: '1em',
+	left: 'calc(1rem + 2px)',
+	top: 'calc(50% + 5px)',
+};
+
+const distanceStyle = {
+	position: 'absolute',
+	fontSize: '.75em',
+	height: '1em',
+	left: 'calc(1rem + 2px)',
+	top: '10%',
+};
+
+const dates = [
+	'Monday 6pm',
+	'Tuesday 7pm',
+	'Thursday 6pm',
+	'Friday 3pm',
+	'Friday 7pm',
+];
+
+const distances = [
+	'0.7 mi',
+	'0.9 mi',
+	'0.7 mi',
+	'1.1 mi',
+	'1.6 mi',
+]
+
 class Events extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<Link to="/user"><RaisedButton label="Primary" labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Primary" labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Secondary" labelStyle={labelStyle} fullWidth={true} secondary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Primary" labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Secondary" labelStyle={labelStyle} fullWidth={true} secondary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Secondary" labelStyle={labelStyle} fullWidth={true} secondary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Primary" labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Secondary" labelStyle={labelStyle} fullWidth={true} secondary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Primary" labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={buttonStyle} /></Link>
-				<Link to="/user"><RaisedButton label="Primary" labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={buttonStyle} /></Link>
+				{list.map((item, index) => (
+					<Link to="/user"><RaisedButton label={item} labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={{
+						borderRadius: 0,
+						color: '#fff',
+						textAlign: "left",
+						height: "10em",
+						background: `linear-gradient(to right, ${events[item.toLowerCase()].color} 50%, rgba(0, 0, 0, 0) 100%), url(${events[item.toLowerCase()].backgroundImage}) right center`,
+						backgroundSize: "cover",
+					}}><span style={distanceStyle}>{distances[index]}</span><span style={dateStyle}>{dates[index]}</span></RaisedButton></Link>
+				))}
 			</div>
 		);
 	}
