@@ -18,6 +18,7 @@ const groupStyle = {
 	width: "100%",
 	margin: "0 auto 1em",
 	display: 'block',
+	position: 'relative',
 };
 
 const subHeaderStyle = {
@@ -27,7 +28,7 @@ const subHeaderStyle = {
 
 const removeStyle = {
 	position: 'absolute',
-	right: '2em',
+	right: '1em',
 	marginTop: '-.5em',
 	cursor: 'pointer'
 };

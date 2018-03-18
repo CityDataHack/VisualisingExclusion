@@ -81,7 +81,7 @@ class Nav extends React.Component {
 					<IconButton style={closeButton} onClick={this.handleClose}><NavigationClose /></IconButton>
 					<Link to="/profile" onClick={this.handleClose}><Paper style={style} zDepth={1} circle={true} /></Link>
 					<Subheader style={subHeaderStyle}>Alisson</Subheader>
-					<MenuItem onClick={this.handleClose}><Link to="/">Index</Link></MenuItem>
+					<MenuItem onClick={this.handleClose}><Link to="/">Home</Link></MenuItem>
 					<MenuItem onClick={this.handleClose}><Link to="/events">Events</Link></MenuItem>
 					<MenuItem onClick={this.handleClose}><Link to="/profile">Profile</Link></MenuItem>
 				</Drawer>
