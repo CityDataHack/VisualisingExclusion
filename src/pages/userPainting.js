@@ -55,8 +55,6 @@ class User extends React.Component {
 						<Paper style={foodCardStyle} zDepth={1} rounded={false} key={img}><div style={{height: '100%', width: '100%', background: `url(${img}) center center`, backgroundSize: 'cover'}} /></Paper>
 					))}
 				</div>
-				<Paper style={groupStyle} zDepth={1} rounded={false}>Cooking</Paper>
-				<Paper style={groupStyle} zDepth={1} rounded={false}>Yoga</Paper>
 			</div>
 		);
 	}

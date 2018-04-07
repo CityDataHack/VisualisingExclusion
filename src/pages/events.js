@@ -76,7 +76,7 @@ class Events extends React.Component {
 		return (
 			<div className="container">
 				{list.map((item, index) => (
-					<Link to={route[item.toLowerCase()]}><RaisedButton label={item} labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={{
+					<Link to={route[item.toLowerCase()]} key={item.toLowerCase() + index}><RaisedButton label={item} labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={{
 						borderRadius: 0,
 						color: '#fff',
 						textAlign: "left",
