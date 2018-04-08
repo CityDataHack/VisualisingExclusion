@@ -1,0 +1,43 @@
+[
+	{
+		"type": "cooking",
+		"color": "#EF5350",
+		"backgroundImage": "./images/food1.jpg",
+		"distance": "0.7 mi",
+		"fromUser": "/user",
+		"desc": "Mediteranean food"
+	},
+	{
+		"type": "painting",
+		"color": "#AB47BC",
+		"backgroundImage": "./images/painting.jpg",
+		"distance": "0.9 mi",
+		"fromUser": "/user",
+		"desc": "Landscape painting"
+	},
+	{
+		"type": "cooking",
+		"color": "#EF5350",
+		"backgroundImage": "./images/food1.jpg",
+		"distance": "0.7 mi",
+		"fromUser": "/user",
+		"desc": "Mediteranean food"
+	},
+	{
+		"type": "yoga",
+		"color": "#43A047",
+		"backgroundImage": "./images/yoga.jpg",
+		"distance": "1.1 mi",
+		"fromUser": "/user",
+		"desc": "Bikram yoga"
+	},
+	{
+		"type": "painting",
+		"color": "#AB47BC",
+		"backgroundImage": "./images/painting.jpg",
+		"distance": "1.6 mi",
+		"fromUser": "/user",
+		"desc": "Landscape painting"
+	}
+]
+
