@@ -2,11 +2,10 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 
 const style = {
-	background: "url(./images/user1.jpg) center center",
-	backgroundSize: 'cover',
 	height: 150,
 	width: 150,
 	margin: "0 auto 1em",
+	overflow: 'hidden',
 	textAlign: 'center',
 	display: 'block',
 };
@@ -25,15 +24,6 @@ const descriptionStyle = {
 	marginBottom: '1em',
 };
 
-const foodImages = [
-	'./images/food1.jpg',
-	'./images/food2.jpg',
-	'./images/food3.jpg',
-	'./images/food4.jpg',
-	'./images/food5.jpg',
-	'./images/food6.jpg',
-];
-
 const foodCardStyle = {
 	height: 100,
 	width: 100,
@@ -44,19 +34,45 @@ const foodCardStyle = {
 }
 
 class User extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			userData: undefined
+		};
+	}
+
+	componentWillMount() {
+		fetch('/public/' + this.props.match.params.user)
+			.then(res => {
+				if (res.status !== 200) {
+					console.log('Something went wrong');
+					return;
+				}
+				res.json().then(userData =>
+					this.setState({ userData })
+				);
+			});
+	}
+
 	render() {
-		return (
+		const userData = this.state.userData;
+		console.log(userData)
+		return userData ? (
 			<div className="container">
-				<Paper style={style} zDepth={1} circle={true} />
+				<Paper style={style} zDepth={1} circle={true}>
+					<img style={{maxWidth: '100%'}} src={userData.profilePic} alt="proficePic" />
+				</Paper>
 				<Paper style={groupStyle} zDepth={1} rounded={false}>Cooking</Paper>
-				<p style={descriptionStyle}>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-				<p style={descriptionStyle}>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p style={descriptionStyle}>{userData.desc}</p>
 				<div style={{textAlign: 'center', marginBottom: '1em'}}>
-					{foodImages.map((img, index) => (
+					{userData.images.map((img, index) => (
 						<Paper style={foodCardStyle} zDepth={1} rounded={false} key={img}><div style={{height: '100%', width: '100%', background: `url(${img}) center center`, backgroundSize: 'cover'}} /></Paper>
 					))}
 				</div>
 			</div>
+		) : (
+			<div>Loading...</div>
 		);
 	}
 }

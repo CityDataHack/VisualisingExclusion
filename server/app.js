@@ -41,6 +41,13 @@ app.get('/aevents', (req, res) => {
 	});
 });
 
+app.get('/public/:user', (req, res) => {
+	User.find({userName: req.params.user}, (err, data) => {
+		res.setHeader('Content-type', 'application/json');
+		res.json(data[0]);
+	})
+});
+
 app.listen(port, _ => {
 	console.log('Server running on port ' + port);
 });

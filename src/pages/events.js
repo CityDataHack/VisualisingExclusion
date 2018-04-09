@@ -3,9 +3,6 @@ import React from 'react';
 // Components
 import EventsModule from '../components/EventsModule';
 
-// Data
-import eventsData from '../data/EventsData.json';
-
 class Events extends React.Component {
 	constructor(props){
 		super(props);
@@ -24,7 +21,8 @@ class Events extends React.Component {
 					return;
 				}
 				res.json().then(data =>
-					this.setState({ data, isLoading: false }))
+					this.setState({ data, isLoading: false })
+				);
 			});
 	}
 
@@ -35,7 +33,7 @@ class Events extends React.Component {
 					<div>Loading...</div>
 				}
 				{this.state.data &&
-					<EventsModule data={eventsData} />
+					<EventsModule data={this.state.data} />
 				}
 			</div>
 		);
