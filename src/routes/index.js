@@ -13,7 +13,7 @@ import Profile from '../pages/profile';
 const Routes = _ => (
 	<Switch>
 		<DefaultLayout exact path="/" component={Index}/>
-		<DefaultLayout path="/events" component={Events}/>
+		<DefaultLayout exact path="/events" component={Events}/>
 		<DefaultLayout path="/user" component={User}/>
 		<DefaultLayout path="/profile" component={Profile}/>
 		<DefaultLayout path="/:else" component={Profile}/>
