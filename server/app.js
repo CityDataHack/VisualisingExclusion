@@ -18,25 +18,27 @@ const Event = mongoose.model('Event', {
 
 const User = mongoose.model('User', {
 	userName: String,
-	profilePic: String,
-	images: [String],
-	desc: String,
-	abilities: [String],
-	interests: [String],
-	events: [{
-		type: String,
-		url: String
-	}],
-	address: {
-		number: Number,
-		street: String,
-		town: String,
-		postcode: String
-	},
-	location: {
-		lon: String,
-		lat: String
-	}
+	password: String,
+	email: String
+	// profilePic: String,
+	// images: [String],
+	// desc: String,
+	// abilities: [String],
+	// interests: [String],
+	// events: [{
+	// 	type: String,
+	// 	url: String
+	// }],
+	// address: {
+	// 	number: Number,
+	// 	street: String,
+	// 	town: String,
+	// 	postcode: String
+	// },
+	// location: {
+	// 	lon: String,
+	// 	lat: String
+	// }
 });
 
 const port = process.env.PORT || 5000;
