@@ -103,7 +103,7 @@
 		"sass-loader": "^6.0.7"
 	},
 	"engine": {
-		"node": "9.2.1"
+		"node": "9.11.1"
 	},
 	"proxy": "http://localhost:5000"
 }
