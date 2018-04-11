@@ -53,41 +53,41 @@
 	"jest": {
 		"collectCoverageFrom": [
 			"src/**/*.{js,jsx,mjs}"
-	],
-	"setupFiles": [
-		"<rootDir>/config/polyfills.js"
-	],
-	"testMatch": [
-		"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-		"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
-	],
-	"testEnvironment": "node",
-	"testURL": "http://localhost",
-	"transform": {
-		"^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
-		"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-		"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-	},
-	"transformIgnorePatterns": [
-		"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-	],
-	"moduleNameMapper": {
-		"^react-native$": "react-native-web"
-	},
-	"moduleFileExtensions": [
-		"web.js",
-		"mjs",
-		"js",
-		"json",
-		"web.jsx",
-		"jsx",
-		"node"
-	]
+		],
+		"setupFiles": [
+			"<rootDir>/config/polyfills.js"
+		],
+		"testMatch": [
+			"<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+			"<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+		],
+		"testEnvironment": "node",
+		"testURL": "http://localhost",
+		"transform": {
+			"^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+			"^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+		},
+		"transformIgnorePatterns": [
+			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+		],
+		"moduleNameMapper": {
+			"^react-native$": "react-native-web"
+		},
+		"moduleFileExtensions": [
+			"web.js",
+			"mjs",
+			"js",
+			"json",
+			"web.jsx",
+			"jsx",
+			"node"
+		]
 	},
 	"babel": {
 		"presets": [
 			"react-app"
-	]
+		]
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -97,8 +97,10 @@
 		"express": "^4.16.3",
 		"material-ui": "^0.20.0",
 		"mongoose": "^5.0.13",
+		"node-sass": "^4.8.3",
 		"ramda": "^0.25.0",
-		"react-router-dom": "^4.2.2"
+		"react-router-dom": "^4.2.2",
+		"sass-loader": "^6.0.7"
 	},
 	"engine": {
 		"node": "9.2.1"

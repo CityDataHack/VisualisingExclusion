@@ -1,12 +1,19 @@
 const app = require('express')();
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/vlxData');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 
 const Event = mongoose.model('Event', {
 	type: String,
 	distance: String,
 	fromUser: String,
-	desc: String
+	desc: String,
+	url: String
 });
 
 const User = mongoose.model('User', {
@@ -16,6 +23,10 @@ const User = mongoose.model('User', {
 	desc: String,
 	abilities: [String],
 	interests: [String],
+	events: [{
+		type: String,
+		url: String
+	}],
 	address: {
 		number: Number,
 		street: String,
@@ -34,7 +45,11 @@ app.post('/auth', (req, res) => {
 	console.log('Login attempt');
 });
 
-app.get('/aevents', (req, res) => {
+app.post('/useradd', (req, res) => {
+	res.send(req.body);
+});
+
+app.get('/events-list', (req, res) => {
 	Event.find({}, (err, data) => {
 		res.setHeader('Content-type', 'application/json');
 		res.json(data);

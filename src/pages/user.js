@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import Subheader from 'material-ui/Subheader';
 
 const style = {
 	height: 150,
@@ -17,6 +18,13 @@ const groupStyle = {
 	width: "100%",
 	margin: "0 auto 1em",
 	display: 'block',
+};
+
+const subHeaderStyle = {
+	fontWeight: 600,
+	marginTop: '-1.5em',
+	textAlign: 'center',
+	marginLeft: '-.6em'
 };
 
 const descriptionStyle = {
@@ -49,20 +57,24 @@ class User extends React.Component {
 					console.log('Something went wrong');
 					return;
 				}
-				res.json().then(userData =>
+				res.json().then(userData => {
+					console.log('userData: ', userData);
 					this.setState({ userData })
-				);
+				}).catch(error => {
+					this.setState({ showError: true });
+				});
 			});
 	}
 
 	render() {
 		const userData = this.state.userData;
-		console.log(userData)
+
 		return userData ? (
 			<div className="container">
 				<Paper style={style} zDepth={1} circle={true}>
 					<img style={{maxWidth: '100%'}} src={userData.profilePic} alt="proficePic" />
 				</Paper>
+				<Subheader style={subHeaderStyle}>{userData.userName}</Subheader>
 				<Paper style={groupStyle} zDepth={1} rounded={false}>Cooking</Paper>
 				<p style={descriptionStyle}>{userData.desc}</p>
 				<div style={{textAlign: 'center', marginBottom: '1em'}}>

@@ -14,7 +14,7 @@ class Events extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch('/aevents')
+		fetch('/events-list')
 			.then(res => {
 				if (res.status !== 200) {
 					console.log('Something went wrong');
