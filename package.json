@@ -1,6 +1,5 @@
 {
 	"name": "vlx",
-	"homepage": "https://CityDataHack.github.io/VisualisingExclusion",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
