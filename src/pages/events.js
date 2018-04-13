@@ -20,9 +20,10 @@ class Events extends React.Component {
 					console.log('Something went wrong');
 					return;
 				}
-				res.json().then(data =>
-					this.setState({ data, isLoading: false })
-				);
+				res.json().then(data => {
+					console.log('eventData: ', data);
+					this.setState({ data, isLoading: false });
+				});
 			});
 	}
 

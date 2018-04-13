@@ -1,6 +1,7 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 mongoose.connect('mongodb://localhost/vlxData');
 
 app.use(bodyParser.json());
@@ -11,7 +12,10 @@ app.use(bodyParser.urlencoded({
 const Event = mongoose.model('Event', {
 	type: String,
 	distance: String,
-	fromUser: String,
+	fromUser: {
+		url: String,
+		id: String
+	},
 	desc: String,
 	url: String
 });
@@ -59,15 +63,24 @@ app.get('/events-list', (req, res) => {
 });
 
 app.get('/public/:user', (req, res) => {
+	User.find({userName: req.params.user},
+		{ userName: 1, events: 1, images: 1, abilities: 1, interests: 1, profilePic: 1, desc: 1 },
+		(err, data) => {
+			res.setHeader('Content-type', 'application/json');
+			res.json(data[0]);
+		});
+});
+
+app.get('/private/:user', (req, res) => {
 	User.find({userName: req.params.user}, (err, data) => {
 		res.setHeader('Content-type', 'application/json');
 		res.json(data[0]);
-	})
+	});
 });
 
 // Always return the main index.html, so react-router render the route in the client
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+	res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
 
 app.listen(port, _ => {

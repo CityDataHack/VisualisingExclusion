@@ -30,7 +30,7 @@ const EventsModule = props => {
 	const events = props.data;
 	
 	return events.map((event, index) => (
-		<Link to={event.fromUser} key={event._id}>
+		<Link to={event.fromUser.url} key={event._id}>
 			<RaisedButton label={event.type} labelStyle={labelStyle} fullWidth={true} primary={true} style={style} buttonStyle={{
 				borderRadius: 0,
 				color: '#fff',
