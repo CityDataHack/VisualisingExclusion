@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
+const app = express();
+
 var URI =
 	process.env.MONGODB_URI ||
 	'mongodb://localhost/vlxData';
@@ -16,8 +18,6 @@ mongoose.connect(URI, (err, res) => {
 		console.log ('Succeeded connected to: ' + URI);
 	}
 });
-
-const app = express();
 
 app.use(express.static(path.join(__dirname, '../build')));
 app.use(bodyParser.json());
@@ -92,9 +92,7 @@ app.get('/private/:user', (req, res) => {
 	});
 });
 
-// Always return the main index.html, so react-router render the route in the client
 app.get('*', (req, res) => {
-	console.log(path.resolve(__dirname, '..', 'build', 'index.html'));
 	res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
 
