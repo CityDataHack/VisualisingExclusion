@@ -2,7 +2,20 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
-mongoose.connect('mongodb://localhost/vlxData');
+
+var URI =
+	process.env.MONGODB_URI ||
+	'mongodb://localhost/vlxData';
+
+var PORT = process.env.PORT || 5000;
+
+mongoose.connect(URI, (err, res) => {
+	if (err) {
+		console.log ('ERROR connecting to: ' + URI + '. ' + err);
+	} else {
+		console.log ('Succeeded connected to: ' + URI);
+	}
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -45,8 +58,6 @@ const User = mongoose.model('User', {
 	// }
 });
 
-const port = process.env.PORT || 5000;
-
 app.post('/auth', (req, res) => {
 	console.log('Login attempt');
 });
@@ -83,6 +94,6 @@ app.get('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
 
-app.listen(port, _ => {
-	console.log('Server running on port ' + port);
+app.listen(PORT, _ => {
+	console.log('Server running on port ' + PORT);
 });
