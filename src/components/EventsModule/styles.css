@@ -1,0 +1,25 @@
+
+const style = {
+	marginBottom: "1em",
+}
+
+const labelStyle = {
+	fontSize: "2em",
+}
+
+const descStyle = {
+	position: 'absolute',
+	fontSize: '.75em',
+	height: '1em',
+	left: 'calc(1rem + 2px)',
+	top: 'calc(50% + 5px)',
+};
+
+const distanceStyle = {
+	position: 'absolute',
+	fontSize: '.75em',
+	height: '1em',
+	left: 'calc(1rem + 2px)',
+	top: '10%',
+};
+
