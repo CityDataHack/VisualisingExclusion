@@ -23,6 +23,8 @@ class Events extends React.Component {
 				res.json().then(data => {
 					console.log('eventData: ', data);
 					this.setState({ data, isLoading: false });
+				}).catch(err => {
+					console.log('err: ', err);
 				});
 			});
 	}

@@ -61,6 +61,7 @@ class User extends React.Component {
 					console.log('userData: ', userData);
 					this.setState({ userData })
 				}).catch(error => {
+					console.log('err: ', error);
 					this.setState({ showError: true });
 				});
 			});
