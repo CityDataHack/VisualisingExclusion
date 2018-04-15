@@ -91,7 +91,7 @@ class newAccount extends React.Component {
 						</div>
 					</div>
 
-					<small>Fields marked * are required.</small>
+					<small className="form__caption">Fields marked * are required.</small>
 					<div className="form__submit">
 						<button className="cta secondary" type="cancel">Cancel</button>
 						<button className="cta primary" onClick={this.submitHandler} id="submitButton" type="submit">Submit</button>

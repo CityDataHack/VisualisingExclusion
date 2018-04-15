@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const expressJWT = require('express-jwt');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+
+app.use(expressJWT({secret: 'some secret'}).unless({path: ['/login']}));
 
 const Event = mongoose.model('Event', {
 	type: String,
@@ -61,12 +65,19 @@ const User = mongoose.model('User', {
 	// }
 });
 
-app.post('/auth', (req, res) => {
-	console.log('Login attempt');
+app.post('/login', (req, res) => {
+	User.findOne({userName: req.body.userName, password: req.body.password}, (err, data) => {
+		if (err || !data) {
+			res.status(400).json(req.body);
+		} else {
+			const token = jwt.sign(data.toJSON(), 'some secret')
+			res.status(200).json(token);
+		}
+	});
 });
 
 app.post('/useradd', (req, res) => {
-	res.send(req.body);
+	res.json(req.body);
 });
 
 app.get('/events-list', (req, res) => {
@@ -93,7 +104,7 @@ app.get('/private/:user', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+	res.render(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
 
 app.listen(PORT, _ => {

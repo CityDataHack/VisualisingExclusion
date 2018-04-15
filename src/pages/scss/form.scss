@@ -77,7 +77,7 @@
 			border-right: 0;
 			border-top: 0;
 			border-radius: 0;
-			padding: .75em 1em;
+			padding: .75em 1em .75em 0;
 
 			&:focus {
 				outline: none;
@@ -116,7 +116,8 @@
 				color: #999;
 				position: absolute;
 				top: 15px;
-				left: 1em;
+				left: 0;
+				cursor: text;
 
 				&.required::after {
 					content: '*';
@@ -186,6 +187,10 @@
 
 		}
 
+		&__caption {
+			font-size: .875em;
+			font-style: italic;
+		}
 
 		&__agreements {
 			color: #999;
@@ -281,17 +286,6 @@
 			float: right;
 			margin-bottom: 10px;
 
-		}
-
-		&__postcodeLookup {
-			margin-bottom: 1px;
-
-			button.primary {
-				padding: 2px 1em;
-				&::after {
-					margin-left: 0;
-				}
-			}
 		}
 
 		@media screen and (min-width: 1000px) {
@@ -417,4 +411,5 @@
 			}
 		}
 	}
+
 }
