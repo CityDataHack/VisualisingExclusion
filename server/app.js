@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-app.use(expressJWT({secret: 'some secret'}).unless({path: ['/login']}));
+app.use(expressJWT({secret: 'some secret'}).unless({path: ['/login', '/new']}));
 
 const Event = mongoose.model('Event', {
 	type: String,

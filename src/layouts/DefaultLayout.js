@@ -11,7 +11,7 @@ const DefaultLayout = ({location, component: Component, ...rest}) => {
 				<Nav />
 			</header>
 			<Route {...rest} render={(props) => (
-				<Component {...props} />
+				<Component {...props} {...rest} />
 			)} />
 		</React.Fragment>
 	);

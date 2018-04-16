@@ -61,6 +61,7 @@ class newAccount extends React.Component {
 	}
 
 	render() {
+		console.log(this.props)
 		return this.state.user ? (
 			<h1>Hello</h1>
 		) : (
