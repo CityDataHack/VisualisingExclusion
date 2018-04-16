@@ -34,7 +34,7 @@ class newAccount extends React.Component {
 	render() {
 		return (
 			<div className="Form">
-				<form className="form" action="/useradd" method="POST" onInvalid={this.invalidHandler} ref={form => this.form = form}>
+				<form className="form" action="/signup" method="POST" onInvalid={this.invalidHandler} ref={form => this.form = form}>
 					<div className="form__element">
 						<label className="form__element__placeholder required" htmlFor="userName">Username</label>
 						<input id="userName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="required form__field" type="text" name="userName" required />

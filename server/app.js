@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-app.use(expressJWT({secret: 'some secret'}).unless({path: ['/login', '/new']}));
+app.use(expressJWT({secret: 'some secret'}).unless({path: ['/login', '/signup', '/signin', '/new']}));
 
 const Event = mongoose.model('Event', {
 	type: String,
@@ -65,7 +65,7 @@ const User = mongoose.model('User', {
 	// }
 });
 
-app.post('/login', (req, res) => {
+app.post('/signin', (req, res) => {
 	User.findOne({userName: req.body.userName, password: req.body.password}, (err, data) => {
 		if (err || !data) {
 			res.status(400).json(req.body);
@@ -76,7 +76,7 @@ app.post('/login', (req, res) => {
 	});
 });
 
-app.post('/useradd', (req, res) => {
+app.post('/signup', (req, res) => {
 	res.json(req.body);
 });
 

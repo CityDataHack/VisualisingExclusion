@@ -41,7 +41,7 @@ class newAccount extends React.Component {
 				e.parentElement.classList.add('show');
 			});
 		} else {
-			fetch('/login', {
+			fetch('/signin', {
 				method: 'POST',
 				body: `userName=${this.login.value}&password=${this.password.value}`,
 				headers: {
