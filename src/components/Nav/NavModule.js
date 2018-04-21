@@ -84,6 +84,8 @@ class Nav extends React.Component {
 					<MenuItem onClick={this.handleClose}><Link to="/">Home</Link></MenuItem>
 					<MenuItem onClick={this.handleClose}><Link to="/events">Events</Link></MenuItem>
 					<MenuItem onClick={this.handleClose}><Link to="/profile">Profile</Link></MenuItem>
+					<MenuItem onClick={this.handleClose}><Link to="/login">Login</Link></MenuItem>
+					<MenuItem onClick={this.handleClose}><Link to="/new">New</Link></MenuItem>
 				</Drawer>
 			</React.Fragment>
 		);
