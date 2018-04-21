@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Sass
 import './scss/form.scss';
@@ -20,10 +21,32 @@ class newAccount extends React.Component {
 	}
 
 	submitHandler = e => {
+		e.preventDefault();
+
 		if (!this.form.checkValidity()) {
 			[].forEach.call(this.form.querySelectorAll(':invalid'), function(e) {
 				e.parentElement.classList.add('show');
 			});
+		} else {
+			fetch('/signup', {
+				method: 'POST',
+				body: `userName=${this.login.value}&\
+					email=${this.email.value}&\
+					password=${this.password.value}&\
+					firstName=${this.firstName.value}&\
+					lastName=${this.lastName.value}&\
+					day=${this.day.value}&\
+					month=${this.month.value}&\
+					year=${this.year.value}`,
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			})
+				.then(res => res.json())
+				.then(data => console.log(data))
+				.catch(err => {
+					console.log(err)
+				});
 		}
 	}
 
@@ -32,24 +55,29 @@ class newAccount extends React.Component {
 	}
 
 	render() {
-		return (
+		return this.props.user ? (
+			<Redirect to={{
+				pathname: '/events',
+				state: {from: this.props.location}
+			}} />
+		) : (
 			<div className="Form">
 				<form className="form" action="/signup" method="POST" onInvalid={this.invalidHandler} ref={form => this.form = form}>
 					<div className="form__element">
 						<label className="form__element__placeholder required" htmlFor="userName">Username</label>
-						<input id="userName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="required form__field" type="text" name="userName" required />
+						<input ref={userName => this.userName = userName} id="userName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="required form__field" type="text" name="userName" required />
 						<small className="requirements">This field is required</small>
 					</div>
 
 					<div className="form__element">
 						<label className="form__element__placeholder required" htmlFor="email">Email</label>
-						<input id="email" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="email" name="email" required />
+						<input ref={email => this.email = email} id="email" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="email" name="email" required />
 						<small className="requirements">Please enter a valid email</small>
 					</div>
 
 					<div className="form__element">
 						<label className="form__element__placeholder required" htmlFor="password">Password</label>
-						<input id="password" onFocus={this.focusHandler} onBlur={this.blurHandler} onChange={this.passwordHandler} className="form__field" type="password" name="password" autoComplete="current-password" minLength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required />
+						<input ref={password => this.password = password} id="password" onFocus={this.focusHandler} onBlur={this.blurHandler} onChange={this.passwordHandler} className="form__field" type="password" name="password" autoComplete="current-password" minLength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required />
 						<small className="requirements">Password must be at least 8 characters and contain at least one uppercase, one lowercase letter and one number</small>
 					</div>
 
@@ -61,13 +89,13 @@ class newAccount extends React.Component {
 
 					<div className="form__element">
 						<label className="form__element__placeholder required" htmlFor="firstName">First Name</label>
-						<input id="firstName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="required form__field" type="text" name="firstName" required />
+						<input ref={firstName => this.firstName = firstName} id="firstName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="required form__field" type="text" name="firstName" required />
 						<small className="requirements">This field is required</small>
 					</div>
 
 					<div className="form__element">
 						<label className="form__element__placeholder required" htmlFor="lastName">Last Name</label>
-						<input id="lastName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="text" name="lastName" required />
+						<input ref={lastName => this.lastName = lastName} id="lastName" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="text" name="lastName" required />
 						<small className="requirements">This field is required</small>
 					</div>
 
@@ -76,17 +104,17 @@ class newAccount extends React.Component {
 
 						<div className="form__field--small">
 							<label className="form__element__placeholder" htmlFor="day">Day</label>
-							<input id="day" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="number" name="day" min="1" max="31" required />
+							<input ref={day => this.day = day} id="day" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="number" name="day" min="1" max="31" required />
 							<small className="requirements">This field is required</small>
 						</div>
 						<div className="form__field--small">
 							<label className="form__element__placeholder" htmlFor="month">Month</label>
-							<input id="month" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="number" name="month" min="1" max="12" required />
+							<input ref={month => this.month = month} id="month" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="number" name="month" min="1" max="12" required />
 							<small className="requirements">This field is required</small>
 						</div>
 						<div className="form__field--small">
 							<label className="form__element__placeholder" htmlFor="year">Year</label>
-							<input id="year" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="number" name="year" min="1900" max="2018" required />
+							<input ref={year => this.year = year} id="year" onFocus={this.focusHandler} onBlur={this.blurHandler} className="form__field" type="number" name="year" min="1900" max="2018" required />
 							<small className="requirements">This field is required</small>
 						</div>
 					</div>

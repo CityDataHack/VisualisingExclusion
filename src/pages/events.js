@@ -13,15 +13,19 @@ class Events extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		fetch('/events-list')
+	componentWillMount() {
+		fetch('/events-list', {
+			method: 'GET',
+			headers: {
+				'authorization': 'Bearer ' + this.props.token,
+			}
+		})
 			.then(res => {
 				if (res.status !== 200) {
 					console.log('Something went wrong');
 					return;
 				}
 				res.json().then(data => {
-					console.log('eventData: ', data);
 					this.setState({ data, isLoading: false });
 				}).catch(err => {
 					console.log('err: ', err);

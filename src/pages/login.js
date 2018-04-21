@@ -1,27 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Sass
 import './scss/form.scss';
 
 class newAccount extends React.Component {
-
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			user: undefined
-		};
-	}
-
-	componentWillMount() {
-		const cookie = document.cookie.split(';').filter(item => item.indexOf('user64=') >= 0).map(s => s.trim())[0];
-
-		if (cookie !== undefined) {
-			const user = JSON.parse(window.atob(cookie.split('=')[1].split('.')[1]))
-			this.setState({ user });
-		}
-	}
-
 	focusHandler = e => {
 		e.target.parentElement.classList.add('hidden');
 		e.target.parentElement.classList.remove('show');
@@ -49,7 +32,11 @@ class newAccount extends React.Component {
 				}
 			})
 				.then(res => res.json())
-				.then(data => document.cookie = `user64=${data}`)
+				.then(data => {
+					document.cookie = `user64=${data}`;
+					const user = JSON.parse(window.atob(data.split('.')[1]))
+					this.props.handleLogin(user, data);
+				})
 				.catch(err => {
 					console.log(err)
 				});
@@ -61,9 +48,11 @@ class newAccount extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
-		return this.state.user ? (
-			<h1>Hello</h1>
+		return this.props.user ? (
+			<Redirect to={{
+				pathname: '/events',
+				state: {from: this.props.location}
+			}} />
 		) : (
 			<div className="Form">
 				<h1>Login</h1>
